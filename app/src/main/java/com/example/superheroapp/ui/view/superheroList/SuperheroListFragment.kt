@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.superheroapp.data.network.NetworkModule
-import com.example.superheroapp.data.network.response.SuperheroResponse
 import com.example.superheroapp.data.network.SuperheroApiService
+import com.example.superheroapp.data.network.response.SuperheroResponse
 import com.example.superheroapp.databinding.FragmentSuperheroListBinding
 import com.example.superheroapp.ui.view.superheroList.adapter.SuperheroListAdapter
 import kotlinx.coroutines.Dispatchers
@@ -49,8 +49,8 @@ class SuperheroListFragment : Fragment() {
                 val response: SuperheroResponse? = superheroList.body()
                 if (response != null) {
                     //Log.i("Inma", response.toString())
-                    withContext(Dispatchers.IO) {
-                       superheroAdapter.updateList(response.results)
+                    withContext(Dispatchers.Main) {
+                       superheroAdapter.updateList(response.superheroes)
                     }
                 }
             }
